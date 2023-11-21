@@ -9,6 +9,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
@@ -19,6 +20,21 @@ public class AlumnoJpaController implements Serializable {
     }
     public AlumnoJpaController(){
         emf = Persistence.createEntityManagerFactory("AppGymPU");
+    }
+    
+    public List<Alumno> findAlLetra(String letra) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<Alumno> query = cb.createQuery(Alumno.class);
+            Root<Alumno> root = query.from(Alumno.class);
+
+            query.where(cb.like(cb.lower(root.get("name")), letra.toLowerCase() + "%")); // Buscar nombres que comiencen con la letra proporcionada
+
+            return em.createQuery(query).getResultList();
+        } finally {
+            em.close();
+        }
     }
     private EntityManagerFactory emf = null;
 

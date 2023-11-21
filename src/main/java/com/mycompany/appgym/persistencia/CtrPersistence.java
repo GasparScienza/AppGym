@@ -1,7 +1,8 @@
 package com.mycompany.appgym.persistencia;
 
 import com.mycompany.appgym.logica.Alumno;
-import com.mycompany.appgym.persistencia.exceptions.NonexistentEntityException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,6 +16,8 @@ public class CtrPersistence {
     PriceListJpaController price = new PriceListJpaController();
     TrainingJpaController training = new TrainingJpaController();
     
+    
+    //-------------Alumno-------------
     public void addAl(Alumno al) {
         alu.create(al);
     }
@@ -26,7 +29,22 @@ public class CtrPersistence {
             Logger.getLogger(CtrPersistence.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+     public Alumno findAlumno(int id) {
+        return alu.findAlumno(id);
+    }
 
+    public ArrayList<Alumno> findListAlumno() {
+        List<Alumno> l = alu.findAlumnoEntities();
+        ArrayList<Alumno> listaAl = new ArrayList(l);
+        return listaAl;
+    }
+    
+    public ArrayList<Alumno> buscarAlumnosLetra(String letra) {
+        List<Alumno> l = alu.findAlLetra(letra);
+        ArrayList<Alumno> listaAl = new ArrayList(l);
+        return listaAl;
+    }
+    
+    //-------------Alumno-------------
     
 }

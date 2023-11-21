@@ -27,12 +27,12 @@ public class Alumno implements Serializable {
 
     public Alumno() {
     }
-    public Alumno(int id, String name, String surname, String obs, boolean bajaA, Date date) {
+    public Alumno(int id, String name, String surname, String obs, Date date) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.obs = obs;
-        this.bajaA = bajaA;
+        this.bajaA = false;
         this.date = date;
     }
     public int getId() {
