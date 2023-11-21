@@ -1,6 +1,7 @@
 package com.mycompany.appgym.logica;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,8 @@ public class AlEntr implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Basic
+    private boolean baja;
     
     @OneToOne
     private Alumno alu;
@@ -21,13 +24,20 @@ public class AlEntr implements Serializable {
     public AlEntr() {
     }
 
-    public AlEntr(int id, Alumno alu, Training entr, Frequency frec) {
+    public AlEntr(int id, Alumno alu, Training entr, Frequency frec, boolean baja) {
         this.id = id;
         this.alu = alu;
         this.entr = entr;
         this.frec = frec;
+        this.baja = baja;
     }
 
+    public boolean isBaja() {
+        return baja;
+    }
+    public void setBaja(boolean baja) {
+        this.baja = baja;
+    }
     public int getId() {
         return id;
     }

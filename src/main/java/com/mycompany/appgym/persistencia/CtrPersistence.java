@@ -1,6 +1,10 @@
 package com.mycompany.appgym.persistencia;
 
+import com.mycompany.appgym.logica.AlEntr;
 import com.mycompany.appgym.logica.Alumno;
+import com.mycompany.appgym.logica.Frequency;
+import com.mycompany.appgym.logica.Training;
+import com.mycompany.appgym.persistencia.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -14,7 +18,7 @@ public class CtrPersistence {
     DebtJpaController deb = new DebtJpaController();
     FrequencyJpaController frec = new FrequencyJpaController();
     PriceListJpaController price = new PriceListJpaController();
-    TrainingJpaController training = new TrainingJpaController();
+    TrainingJpaController tr = new TrainingJpaController();
     
     
     //-------------Alumno-------------
@@ -39,12 +43,83 @@ public class CtrPersistence {
         return listaAl;
     }
     
-    public ArrayList<Alumno> buscarAlumnosLetra(String letra) {
+    public ArrayList<Alumno> findAlLetra(String letra) {
         List<Alumno> l = alu.findAlLetra(letra);
         ArrayList<Alumno> listaAl = new ArrayList(l);
         return listaAl;
     }
     
-    //-------------Alumno-------------
+    //-------------Frequency-------------
+    public void addF(Frequency f) {
+        frec.create(f);
+    }
+    public void delF(int id){
+        try {
+            frec.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(CtrPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void edF(Frequency f) {
+        try {
+            frec.edit(f);
+        } catch (Exception ex) {
+            Logger.getLogger(CtrPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     public Frequency findFrequency(int id) {
+        return frec.findFrequency(id);
+    }
+
+    public ArrayList<Frequency> findListFreq() {
+        List<Frequency> l = frec.findFrequencyEntities();
+        ArrayList<Frequency> listF = new ArrayList(l);
+        return listF;
+    }
+    //-------------Training-------------
+    public void addTr(Training t){
+        tr.create(t);
+    }
+    public void delTr(int id){
+        try {
+            tr.destroy(id);
+        } catch (NonexistentEntityException ex) {
+            Logger.getLogger(CtrPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public void edTr(Training t){
+        try {
+            tr.edit(t);
+        } catch (Exception ex) {
+            Logger.getLogger(CtrPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public Training findTr(int id){
+        return tr.findTraining(id);
+    }
+    public ArrayList<Training> findListTr() {
+        List<Training> l = tr.findTrainingEntities();
+        ArrayList<Training> listF = new ArrayList(l);
+        return listF;
+    }
+    //-------------AlEntr-------------
+    public void addAlE(AlEntr a){
+        alEntr.create(a);
+    }
+    public void edAlE(AlEntr a){
+        try {
+            alEntr.edit(a);
+        } catch (Exception ex) {
+            Logger.getLogger(CtrPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    public AlEntr findAle(int id){
+        return alEntr.findAlEntr(id);
+    }
+    public ArrayList<AlEntr> findListAle() {
+        List<AlEntr> l = alEntr.findAlEntrEntities();
+        ArrayList<AlEntr> listF = new ArrayList(l);
+        return listF;
+    }
     
 }

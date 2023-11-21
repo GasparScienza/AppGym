@@ -20,7 +20,6 @@ public class Alumno implements Serializable {
     private String name;
     private String surname;  
     private String obs;
-    private boolean bajaA;
     
     @Temporal(TemporalType.DATE)
     private Date date;
@@ -32,7 +31,6 @@ public class Alumno implements Serializable {
         this.name = name;
         this.surname = surname;
         this.obs = obs;
-        this.bajaA = false;
         this.date = date;
     }
     public int getId() {
@@ -58,12 +56,6 @@ public class Alumno implements Serializable {
     }
     public void setObs(String obs) {
         this.obs = obs;
-    }
-    public boolean isBajaA() {
-        return bajaA;
-    }
-    public void setBajaA(boolean bajaA) {
-        this.bajaA = bajaA;
     }
     public Date getDate() {
         return date;

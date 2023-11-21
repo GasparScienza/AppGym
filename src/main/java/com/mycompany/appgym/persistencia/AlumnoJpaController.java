@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.mycompany.appgym.persistencia;
 
 import com.mycompany.appgym.logica.Alumno;
@@ -13,11 +17,21 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+/**
+ *
+ * @author Gasparcitoh
+ */
 public class AlumnoJpaController implements Serializable {
 
     public AlumnoJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
+    private EntityManagerFactory emf = null;
+
+    public EntityManager getEntityManager() {
+        return emf.createEntityManager();
+    }
+
     public AlumnoJpaController(){
         emf = Persistence.createEntityManagerFactory("AppGymPU");
     }
@@ -36,12 +50,6 @@ public class AlumnoJpaController implements Serializable {
             em.close();
         }
     }
-    private EntityManagerFactory emf = null;
-
-    public EntityManager getEntityManager() {
-        return emf.createEntityManager();
-    }
-
     public void create(Alumno alumno) {
         EntityManager em = null;
         try {

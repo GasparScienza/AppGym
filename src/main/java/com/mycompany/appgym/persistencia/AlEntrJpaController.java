@@ -17,11 +17,9 @@ public class AlEntrJpaController implements Serializable {
     public AlEntrJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
     public AlEntrJpaController(){
         emf = Persistence.createEntityManagerFactory("AppGymPU");
     }
-    
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
