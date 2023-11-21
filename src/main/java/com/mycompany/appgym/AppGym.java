@@ -11,7 +11,7 @@ import java.util.Date;
 public class AppGym {
 
     public static void main(String[] args) {
-        /**
+        
         CtrPersistence ctrP = new CtrPersistence();
         Date fechaActual = new Date();
         Alumno al = new Alumno(1,"Gaspar","Scienza","Hola", fechaActual);
@@ -36,10 +36,11 @@ public class AppGym {
                 
         ctrP.addAlE(alE);
         ctrP.addAlE(alE1);
-        * **/
         
+        /**
         Principal p = new Principal();
         p.setVisible(true);
         p.setLocationRelativeTo(null);
+        * **/
     }
 }

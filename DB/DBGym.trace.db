@@ -1,0 +1,27 @@
+2023-11-21 17:33:19.621868-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "ALENTR" not found (this database is empty); SQL statement:
+SELECT 1 FROM ALENTR [42104-222]
+2023-11-21 17:33:19.635859-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "ALUMNO" no encontrada
+Table "ALUMNO" not found; SQL statement:
+SELECT 1 FROM ALUMNO [42102-222]
+2023-11-21 17:33:19.637827-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "DEBT" no encontrada
+Table "DEBT" not found; SQL statement:
+SELECT 1 FROM DEBT [42102-222]
+2023-11-21 17:33:19.638824-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "FREQUENCY" no encontrada
+Table "FREQUENCY" not found; SQL statement:
+SELECT 1 FROM FREQUENCY [42102-222]
+2023-11-21 17:33:19.639821-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "PRICELIST" no encontrada
+Table "PRICELIST" not found; SQL statement:
+SELECT 1 FROM PRICELIST [42102-222]
+2023-11-21 17:33:19.640818-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "TRAINING" no encontrada
+Table "TRAINING" not found; SQL statement:
+SELECT 1 FROM TRAINING [42102-222]
+2023-11-21 17:33:19.653782-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "SEQUENCE" no encontrada
+Table "SEQUENCE" not found; SQL statement:
+SELECT 1 FROM SEQUENCE [42102-222]

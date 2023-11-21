@@ -9,7 +9,7 @@
     <class>com.mycompany.appgym.logica.PriceList</class>
     <class>com.mycompany.appgym.logica.Training</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:h2:C:\Users\Gasparcitoh\Documents\NetBeansProjects\AppGym\DB\DBGym"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:h2:...\DB\DBGym"/>
       <property name="javax.persistence.jdbc.user" value="sa"/>
       <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
       <property name="javax.persistence.jdbc.password" value=""/>
