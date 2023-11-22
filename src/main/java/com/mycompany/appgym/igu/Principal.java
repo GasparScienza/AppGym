@@ -16,6 +16,7 @@ public class Principal extends javax.swing.JFrame {
         jbtAddEntr = new javax.swing.JButton();
         jbtAddFrec = new javax.swing.JButton();
         jbtAddFrec1 = new javax.swing.JButton();
+        jbtAddFrec2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,19 +48,29 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jbtAddFrec2.setText("Lista de Precios");
+        jbtAddFrec2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtAddFrec2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jbtAddAlum)
-                .addGap(18, 18, 18)
-                .addComponent(jbtAddEntr)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbtAddFrec)
-                .addGap(18, 18, 18)
-                .addComponent(jbtAddFrec1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbtAddFrec2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbtAddAlum)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtAddEntr)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbtAddFrec)
+                        .addGap(18, 18, 18)
+                        .addComponent(jbtAddFrec1)))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -71,7 +82,9 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jbtAddEntr)
                     .addComponent(jbtAddFrec)
                     .addComponent(jbtAddFrec1))
-                .addContainerGap(372, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jbtAddFrec2)
+                .addContainerGap(331, Short.MAX_VALUE))
         );
 
         pack();
@@ -102,10 +115,17 @@ public class Principal extends javax.swing.JFrame {
         tr.setLocationRelativeTo(null);
     }//GEN-LAST:event_jbtAddEntrActionPerformed
 
+    private void jbtAddFrec2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAddFrec2ActionPerformed
+        addPrice p = new addPrice();
+        p.setVisible(true);
+        p.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jbtAddFrec2ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtAddAlum;
     private javax.swing.JButton jbtAddEntr;
     private javax.swing.JButton jbtAddFrec;
     private javax.swing.JButton jbtAddFrec1;
+    private javax.swing.JButton jbtAddFrec2;
     // End of variables declaration//GEN-END:variables
 }

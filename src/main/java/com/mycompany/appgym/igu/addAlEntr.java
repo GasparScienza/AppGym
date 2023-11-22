@@ -24,6 +24,7 @@ public class addAlEntr extends javax.swing.JFrame {
 
     public addAlEntr() {
         initComponents();
+        this.setResizable(false);
         actTabla();
         configurarComboBox();
     }
@@ -177,11 +178,14 @@ public class addAlEntr extends javax.swing.JFrame {
         lblFechaPago3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblFechaPago3.setText("*Frecuencia:");
 
+        cbmTraining.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
         cbmTraining.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbmTrainingActionPerformed(evt);
             }
         });
+
+        cbmFreq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -343,7 +347,7 @@ public class addAlEntr extends javax.swing.JFrame {
     }
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        if(txtAl.getText().isEmpty()){
+        if(txtAl.getText().isEmpty()|| cbmFreq.getSelectedItem() == "..." || cbmTraining.getSelectedItem() == "..."){
             JOptionPane.showMessageDialog(null, "Los campos obligatorios no fueron completados");
         }else{
             AlEntr alE = new AlEntr();

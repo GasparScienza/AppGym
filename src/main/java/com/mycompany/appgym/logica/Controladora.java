@@ -62,7 +62,7 @@ public class Controladora {
    public List<Training> findListTr(){
        return ctrP.findListTr();
    }
-   //-------------Training-------------
+   //-------------AlEntr-------------
    public void addAlE(AlEntr a){
         ctrP.addAlE(a);
     }
@@ -75,4 +75,19 @@ public class Controladora {
    public ArrayList<AlEntr> findListAlE(){
        return ctrP.findListAle();
    }
+   //-------------PriceList-------------
+   public void addPrice(PriceList p){
+        ctrP.addPrice(p);
+    }
+    public void edPrice(PriceList p){
+        ctrP.edPrice(p);
+    }
+    
+    public PriceList findPrice(int id){
+       return ctrP.findPrice(id);
+    }
+   
+   public List<PriceList> findListPrice(){
+       return ctrP.findListPrice();
+    }
 }

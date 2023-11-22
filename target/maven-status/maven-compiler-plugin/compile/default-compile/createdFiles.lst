@@ -2,17 +2,22 @@ com\mycompany\appgym\igu\addAlEntr$6.class
 com\mycompany\appgym\persistencia\FrequencyJpaController.class
 com\mycompany\appgym\persistencia\DebtJpaController.class
 com\mycompany\appgym\logica\Alumno.class
+com\mycompany\appgym\igu\addPrice$2.class
 com\mycompany\appgym\igu\Principal$1.class
 com\mycompany\appgym\logica\Controladora.class
 com\mycompany\appgym\persistencia\CtrPersistence.class
 com\mycompany\appgym\logica\PriceList.class
+com\mycompany\appgym\igu\Principal$5.class
 com\mycompany\appgym\igu\AddAlum$1.class
 com\mycompany\appgym\logica\Training_.class
 com\mycompany\appgym\igu\addFrec$2.class
 com\mycompany\appgym\igu\addAlEntr$3.class
+com\mycompany\appgym\igu\addPrice$6.class
 com\mycompany\appgym\igu\addTraining$1.class
 com\mycompany\appgym\logica\AlEntr_.class
 com\mycompany\appgym\igu\AddAlum$4.class
+com\mycompany\appgym\igu\addPrice$1.class
+com\mycompany\appgym\igu\addPrice.class
 com\mycompany\appgym\persistencia\TrainingJpaController.class
 com\mycompany\appgym\logica\Alumno_.class
 com\mycompany\appgym\igu\Principal.class
@@ -24,6 +29,7 @@ com\mycompany\appgym\persistencia\exceptions\PreexistingEntityException.class
 com\mycompany\appgym\persistencia\PriceListJpaController.class
 com\mycompany\appgym\igu\addAlEntr$7.class
 com\mycompany\appgym\logica\Debt.class
+com\mycompany\appgym\igu\addPrice$5.class
 com\mycompany\appgym\logica\Debt_.class
 com\mycompany\appgym\igu\addFrec.class
 com\mycompany\appgym\igu\AddAlum$3.class
@@ -31,6 +37,7 @@ com\mycompany\appgym\logica\Training.class
 com\mycompany\appgym\igu\Principal$3.class
 com\mycompany\appgym\igu\addAlEntr$8.class
 com\mycompany\appgym\igu\addAlEntr$4.class
+com\mycompany\appgym\igu\addPrice$4.class
 com\mycompany\appgym\igu\addAlEntr.class
 com\mycompany\appgym\logica\PriceList_.class
 com\mycompany\appgym\igu\addAlEntr$1.class
@@ -42,6 +49,7 @@ com\mycompany\appgym\igu\addAlEntr$5.class
 com\mycompany\appgym\igu\Principal$2.class
 com\mycompany\appgym\logica\Frequency_.class
 com\mycompany\appgym\igu\AddAlum$2.class
+com\mycompany\appgym\igu\addPrice$3.class
 com\mycompany\appgym\igu\addFrec$1.class
 com\mycompany\appgym\logica\Frequency.class
 com\mycompany\appgym\persistencia\AlEntrJpaController.class

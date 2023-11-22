@@ -3,6 +3,7 @@ package com.mycompany.appgym.persistencia;
 import com.mycompany.appgym.logica.AlEntr;
 import com.mycompany.appgym.logica.Alumno;
 import com.mycompany.appgym.logica.Frequency;
+import com.mycompany.appgym.logica.PriceList;
 import com.mycompany.appgym.logica.Training;
 import com.mycompany.appgym.persistencia.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
@@ -118,6 +119,25 @@ public class CtrPersistence {
         List<AlEntr> l = alEntr.findAlEntrEntities();
         ArrayList<AlEntr> listF = new ArrayList(l);
         return listF;
+    }
+    //-------------PriceList-------------
+    public void addPrice(PriceList p) {
+        price.create(p);
+    }
+
+    public void edPrice(PriceList p) {
+        try {
+            price.edit(p);
+        } catch (Exception ex) {
+            Logger.getLogger(CtrPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     public PriceList findPrice(int id) {
+         return price.findPriceList(id);
+    }
+
+    public List<PriceList> findListPrice() {
+        return price.findPriceListEntities();
     }
     
 }
