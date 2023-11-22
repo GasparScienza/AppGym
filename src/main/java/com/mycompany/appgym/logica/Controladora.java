@@ -2,6 +2,7 @@ package com.mycompany.appgym.logica;
 
 import com.mycompany.appgym.persistencia.CtrPersistence;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Controladora {
     CtrPersistence  ctrP = new CtrPersistence();
@@ -58,7 +59,7 @@ public class Controladora {
        return ctrP.findTr(id);
    }
    
-   public ArrayList<Training> findListTr(){
+   public List<Training> findListTr(){
        return ctrP.findListTr();
    }
    //-------------Training-------------

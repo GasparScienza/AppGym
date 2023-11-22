@@ -31,7 +31,6 @@ public class AlumnoJpaController implements Serializable {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-
     public AlumnoJpaController(){
         emf = Persistence.createEntityManagerFactory("AppGymPU");
     }
@@ -50,6 +49,7 @@ public class AlumnoJpaController implements Serializable {
             em.close();
         }
     }
+
     public void create(Alumno alumno) {
         EntityManager em = null;
         try {

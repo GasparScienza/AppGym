@@ -20,19 +20,30 @@ public class Alumno implements Serializable {
     private String name;
     private String surname;  
     private String obs;
+    private boolean associate;
     
     @Temporal(TemporalType.DATE)
     private Date date;
 
     public Alumno() {
     }
-    public Alumno(int id, String name, String surname, String obs, Date date) {
+
+    public Alumno(int id, String name, String surname, String obs, boolean associate, Date date) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.obs = obs;
+        this.associate = associate;
         this.date = date;
     }
+
+    public boolean isAssociate() {
+        return associate;
+    }
+    public void setAssociate(boolean associate) {
+        this.associate = associate;
+    }
+    
     public int getId() {
         return id;
     }

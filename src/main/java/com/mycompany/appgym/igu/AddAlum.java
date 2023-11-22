@@ -167,6 +167,7 @@ public class AddAlum extends javax.swing.JFrame {
             al.setSurname(jtxtApellido.getText());
             al.setDate(fecha);
             al.setObs(jtxtObservacion.getText());
+            al.setAssociate(false);
 
             ctrP.addAl(al);
             this.limpiarTabla();

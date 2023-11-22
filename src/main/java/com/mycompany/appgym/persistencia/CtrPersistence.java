@@ -97,10 +97,8 @@ public class CtrPersistence {
     public Training findTr(int id){
         return tr.findTraining(id);
     }
-    public ArrayList<Training> findListTr() {
-        List<Training> l = tr.findTrainingEntities();
-        ArrayList<Training> listF = new ArrayList(l);
-        return listF;
+    public List<Training> findListTr() {
+        return tr.findTrainingEntities();
     }
     //-------------AlEntr-------------
     public void addAlE(AlEntr a){
