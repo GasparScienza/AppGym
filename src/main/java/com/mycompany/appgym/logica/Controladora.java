@@ -9,19 +9,16 @@ public class Controladora {
     //-------------Alumno-------------
     public void addAl(Alumno al){
         ctrP.addAl(al);
-    }
-    
+    }  
     public void edAl(Alumno al){
         ctrP.edAl(al);
     }
-    
     public Alumno findAlumno(int id){
        return ctrP.findAlumno(id);
-   }
-   
+    }
    public ArrayList<Alumno> findListAlumno(){
        return ctrP.findListAlumno();
-   }
+    }
    
    public ArrayList<Alumno> findAlLetra(String letra) {
         return ctrP.findAlLetra(letra);
@@ -35,12 +32,10 @@ public class Controladora {
     }
     public void edF(Frequency f){
         ctrP.edF(f);
-    }
-    
+    }  
     public Frequency findFrequency(int id){
        return ctrP.findFrequency(id);
-   }
-   
+   }  
    public ArrayList<Frequency> findListFreq(){
        return ctrP.findListFreq();
    }
@@ -53,12 +48,10 @@ public class Controladora {
     }
     public void edTr(Training t){
         ctrP.edTr(t);
-    }
-    
+    }   
     public Training findTr(int id){
        return ctrP.findTr(id);
-   }
-   
+   }   
    public List<Training> findListTr(){
        return ctrP.findListTr();
    }
@@ -81,13 +74,24 @@ public class Controladora {
     }
     public void edPrice(PriceList p){
         ctrP.edPrice(p);
-    }
-    
+    }   
     public PriceList findPrice(int id){
        return ctrP.findPrice(id);
-    }
-   
+    }   
    public List<PriceList> findListPrice(){
        return ctrP.findListPrice();
+    }
+   //-------------Pago-------------
+   public void addPago(Pago p){
+        ctrP.addPago(p);
+    }
+    public void edPago(Pago p){
+        ctrP.edPago(p);
+    }   
+    public Pago findPago(int id){
+       return ctrP.findPago(id);
+    }
+   public List<Pago> findListPago(){
+       return ctrP.findListPago();
     }
 }

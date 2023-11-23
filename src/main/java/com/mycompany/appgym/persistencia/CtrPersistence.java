@@ -3,6 +3,7 @@ package com.mycompany.appgym.persistencia;
 import com.mycompany.appgym.logica.AlEntr;
 import com.mycompany.appgym.logica.Alumno;
 import com.mycompany.appgym.logica.Frequency;
+import com.mycompany.appgym.logica.Pago;
 import com.mycompany.appgym.logica.PriceList;
 import com.mycompany.appgym.logica.Training;
 import com.mycompany.appgym.persistencia.exceptions.NonexistentEntityException;
@@ -20,6 +21,7 @@ public class CtrPersistence {
     FrequencyJpaController frec = new FrequencyJpaController();
     PriceListJpaController price = new PriceListJpaController();
     TrainingJpaController tr = new TrainingJpaController();
+    PagoJpaController pag = new PagoJpaController();
     
     
     //-------------Alumno-------------
@@ -138,6 +140,25 @@ public class CtrPersistence {
 
     public List<PriceList> findListPrice() {
         return price.findPriceListEntities();
+    }
+    //-------------pago-------------
+    public void addPago(Pago p) {
+        pag.create(p);
+    }
+
+    public void edPago(Pago p) {
+        try {
+            pag.edit(p);
+        } catch (Exception ex) {
+            Logger.getLogger(CtrPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     public Pago findPago(int id) {
+         return pag.findPago(id);
+    }
+
+    public List<Pago> findListPago() {
+        return pag.findPagoEntities();
     }
     
 }
