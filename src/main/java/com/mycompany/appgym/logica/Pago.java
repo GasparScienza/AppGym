@@ -18,7 +18,7 @@ public class Pago implements Serializable {
     private int id;
     
     @OneToOne
-    private AlEntr al;
+    private Alumno al;
     
     @Temporal(TemporalType.DATE)
     private Date date;
@@ -29,7 +29,7 @@ public class Pago implements Serializable {
     public Pago() {
     }
 
-    public Pago(int id, AlEntr al, Date date, String obs) {
+    public Pago(int id, Alumno al, Date date, String obs) {
         this.id = id;
         this.al = al;
         this.date = date;
@@ -42,10 +42,10 @@ public class Pago implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
-    public AlEntr getAl() {
+    public Alumno getAl() {
         return al;
     }
-    public void setAl(AlEntr al) {
+    public void setAl(Alumno al) {
         this.al = al;
     }
     public Date getDate() {

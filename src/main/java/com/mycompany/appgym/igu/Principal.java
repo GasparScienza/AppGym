@@ -17,6 +17,7 @@ public class Principal extends javax.swing.JFrame {
         jbtAddFrec = new javax.swing.JButton();
         jbtAddFrec1 = new javax.swing.JButton();
         jbtAddFrec2 = new javax.swing.JButton();
+        jbtAddFrec3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,6 +56,13 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jbtAddFrec3.setText("Pago");
+        jbtAddFrec3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtAddFrec3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -62,15 +70,17 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jbtAddFrec2)
+                    .addComponent(jbtAddAlum)
+                    .addComponent(jbtAddFrec2))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbtAddAlum)
-                        .addGap(18, 18, 18)
                         .addComponent(jbtAddEntr)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jbtAddFrec)
                         .addGap(18, 18, 18)
-                        .addComponent(jbtAddFrec1)))
+                        .addComponent(jbtAddFrec1))
+                    .addComponent(jbtAddFrec3))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -83,7 +93,9 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jbtAddFrec)
                     .addComponent(jbtAddFrec1))
                 .addGap(18, 18, 18)
-                .addComponent(jbtAddFrec2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtAddFrec2)
+                    .addComponent(jbtAddFrec3))
                 .addContainerGap(331, Short.MAX_VALUE))
         );
 
@@ -121,11 +133,18 @@ public class Principal extends javax.swing.JFrame {
         p.setLocationRelativeTo(null);
     }//GEN-LAST:event_jbtAddFrec2ActionPerformed
 
+    private void jbtAddFrec3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAddFrec3ActionPerformed
+        addPago pag = new addPago();
+        pag.setVisible(true);
+        pag.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jbtAddFrec3ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jbtAddAlum;
     private javax.swing.JButton jbtAddEntr;
     private javax.swing.JButton jbtAddFrec;
     private javax.swing.JButton jbtAddFrec1;
     private javax.swing.JButton jbtAddFrec2;
+    private javax.swing.JButton jbtAddFrec3;
     // End of variables declaration//GEN-END:variables
 }

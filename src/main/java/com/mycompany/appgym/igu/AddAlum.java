@@ -58,6 +58,11 @@ public class AddAlum extends javax.swing.JFrame {
                 jtxtfechaInscrFocusLost(evt);
             }
         });
+        jtxtfechaInscr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxtfechaInscrActionPerformed(evt);
+            }
+        });
 
         Nombre3.setText("Observacion");
 
@@ -174,6 +179,10 @@ public class AddAlum extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Guardado con exito");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jtxtfechaInscrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtfechaInscrActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtfechaInscrActionPerformed
     
     
     private void limpiarTabla() {

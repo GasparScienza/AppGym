@@ -8,6 +8,7 @@
     <class>com.mycompany.appgym.logica.Frequency</class>
     <class>com.mycompany.appgym.logica.PriceList</class>
     <class>com.mycompany.appgym.logica.Training</class>
+    <class>com.mycompany.appgym.logica.Pago</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:h2:...\DB\DBGym"/>
       <property name="javax.persistence.jdbc.user" value="sa"/>
