@@ -418,6 +418,7 @@ public class addAlEntr extends javax.swing.JFrame {
             p.setDate(fecha);
             p.setObs(txtObs.getText());
             
+            
             alu.setAssociate(true);
             ctrP.edAl(alu);
             alE.setBaja(false);
