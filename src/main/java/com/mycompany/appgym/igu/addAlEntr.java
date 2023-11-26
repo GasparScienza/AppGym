@@ -4,10 +4,14 @@ import com.mycompany.appgym.logica.AlEntr;
 import com.mycompany.appgym.logica.Alumno;
 import com.mycompany.appgym.logica.Controladora;
 import com.mycompany.appgym.logica.Frequency;
+<<<<<<< HEAD
 import com.mycompany.appgym.logica.Pago;
 import com.mycompany.appgym.logica.Training;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+=======
+import com.mycompany.appgym.logica.Training;
+>>>>>>> 7f9687ce2d8a2d61bc0e812b75502f5dc923317e
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -72,7 +76,10 @@ public class addAlEntr extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+<<<<<<< HEAD
         jSpinner1 = new javax.swing.JSpinner();
+=======
+>>>>>>> 7f9687ce2d8a2d61bc0e812b75502f5dc923317e
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jbtFind = new javax.swing.JButton();
@@ -87,12 +94,15 @@ public class addAlEntr extends javax.swing.JFrame {
         lblFechaPago3 = new javax.swing.JLabel();
         cbmTraining = new javax.swing.JComboBox<>();
         cbmFreq = new javax.swing.JComboBox<>();
+<<<<<<< HEAD
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         txtFecha = new javax.swing.JTextField();
         lblFechaPago4 = new javax.swing.JLabel();
         lblFechaPago5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtObs = new javax.swing.JTextArea();
+=======
+>>>>>>> 7f9687ce2d8a2d61bc0e812b75502f5dc923317e
         btnAdd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -197,6 +207,7 @@ public class addAlEntr extends javax.swing.JFrame {
 
         cbmFreq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
 
+<<<<<<< HEAD
         jDateChooser1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jDateChooser1FocusLost(evt);
@@ -224,6 +235,8 @@ public class addAlEntr extends javax.swing.JFrame {
         txtObs.setRows(5);
         jScrollPane1.setViewportView(txtObs);
 
+=======
+>>>>>>> 7f9687ce2d8a2d61bc0e812b75502f5dc923317e
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -233,6 +246,7 @@ public class addAlEntr extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lblFechaPago1)
+<<<<<<< HEAD
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtAl, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -256,6 +270,18 @@ public class addAlEntr extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
+=======
+                        .addGap(18, 18, 18)
+                        .addComponent(txtAl))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblFechaPago2)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbmTraining, 0, 139, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblFechaPago3)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbmFreq, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+>>>>>>> 7f9687ce2d8a2d61bc0e812b75502f5dc923317e
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -265,6 +291,7 @@ public class addAlEntr extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaPago1)
                     .addComponent(txtAl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+<<<<<<< HEAD
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaPago2)
@@ -283,6 +310,19 @@ public class addAlEntr extends javax.swing.JFrame {
                     .addComponent(jScrollPane1)
                     .addComponent(lblFechaPago5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(41, 41, 41))
+=======
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(cbmTraining, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                        .addGap(1, 1, 1))
+                    .addComponent(lblFechaPago2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFechaPago3)
+                    .addComponent(cbmFreq, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+                .addGap(163, 163, 163))
+>>>>>>> 7f9687ce2d8a2d61bc0e812b75502f5dc923317e
         );
 
         btnAdd.setText("Agregar");
@@ -303,7 +343,11 @@ public class addAlEntr extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+<<<<<<< HEAD
                         .addGap(0, 0, Short.MAX_VALUE))
+=======
+                        .addGap(0, 123, Short.MAX_VALUE))
+>>>>>>> 7f9687ce2d8a2d61bc0e812b75502f5dc923317e
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -313,7 +357,11 @@ public class addAlEntr extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(19, 19, 19)
+=======
+                .addGap(35, 35, 35)
+>>>>>>> 7f9687ce2d8a2d61bc0e812b75502f5dc923317e
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -404,6 +452,7 @@ public class addAlEntr extends javax.swing.JFrame {
     }
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+<<<<<<< HEAD
         if(txtAl.getText().isEmpty()|| txtFecha.getText().isEmpty() || cbmFreq.getSelectedItem() == "..." || cbmTraining.getSelectedItem() == "..."){
             JOptionPane.showMessageDialog(null, "Los campos obligatorios no fueron completados");
         }else{
@@ -419,6 +468,14 @@ public class addAlEntr extends javax.swing.JFrame {
             p.setObs(txtObs.getText());
             
             
+=======
+        if(txtAl.getText().isEmpty()|| cbmFreq.getSelectedItem() == "..." || cbmTraining.getSelectedItem() == "..."){
+            JOptionPane.showMessageDialog(null, "Los campos obligatorios no fueron completados");
+        }else{
+            AlEntr alE = new AlEntr();
+            alE.setAlu(alu);
+            
+>>>>>>> 7f9687ce2d8a2d61bc0e812b75502f5dc923317e
             alu.setAssociate(true);
             ctrP.edAl(alu);
             alE.setBaja(false);
@@ -437,6 +494,7 @@ public class addAlEntr extends javax.swing.JFrame {
     private void cbmTrainingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmTrainingActionPerformed
 
     }//GEN-LAST:event_cbmTrainingActionPerformed
+<<<<<<< HEAD
 
     private void jDateChooser1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDateChooser1FocusLost
         // TODO add your handling code here:
@@ -460,6 +518,8 @@ public class addAlEntr extends javax.swing.JFrame {
             txtFecha.setText(formattedFecha);
         }
     }//GEN-LAST:event_txtFechaFocusLost
+=======
+>>>>>>> 7f9687ce2d8a2d61bc0e812b75502f5dc923317e
     private Map<String, Training> mapEntrenamientos = new HashMap<>();
     private Map<String, Frequency> mapFrec = new HashMap<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -467,23 +527,34 @@ public class addAlEntr extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbmFreq;
     private javax.swing.JComboBox<String> cbmTraining;
     private javax.swing.JButton jButton1;
+<<<<<<< HEAD
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinner1;
+=======
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+>>>>>>> 7f9687ce2d8a2d61bc0e812b75502f5dc923317e
     private javax.swing.JButton jbtFind;
     private javax.swing.JScrollPane jpAl;
     private javax.swing.JTable jtbAl;
     private javax.swing.JLabel lblFechaPago1;
     private javax.swing.JLabel lblFechaPago2;
     private javax.swing.JLabel lblFechaPago3;
+<<<<<<< HEAD
     private javax.swing.JLabel lblFechaPago4;
     private javax.swing.JLabel lblFechaPago5;
     private javax.swing.JTextField txtAl;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtFindAl;
     private javax.swing.JTextArea txtObs;
+=======
+    private javax.swing.JTextField txtAl;
+    private javax.swing.JTextField txtFindAl;
+>>>>>>> 7f9687ce2d8a2d61bc0e812b75502f5dc923317e
     // End of variables declaration//GEN-END:variables
 }
