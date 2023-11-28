@@ -18,7 +18,9 @@ public class AlEntr implements Serializable {
     
     @OneToOne
     private Alumno alu;
+    @OneToOne
     private Training entr;
+    @OneToOne
     private Frequency frec;
 
     public AlEntr() {

@@ -1,10 +1,11 @@
 package com.mycompany.appgym.logica;
 
 import com.mycompany.appgym.persistencia.CtrPersistence;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Controladora {
+public class Controladora implements Serializable{
     CtrPersistence  ctrP = new CtrPersistence();
     //-------------Alumno-------------
     public void addAl(Alumno al){
@@ -68,6 +69,9 @@ public class Controladora {
    public ArrayList<AlEntr> findListAlE(){
        return ctrP.findListAle();
    }
+    public ArrayList<AlEntr> findAlELetra(String letra) {
+        return ctrP.findAlELetra(letra);
+    }
    //-------------PriceList-------------
    public void addPrice(PriceList p){
         ctrP.addPrice(p);
@@ -91,7 +95,11 @@ public class Controladora {
     public Pago findPago(int id){
        return ctrP.findPago(id);
     }
-   public List<Pago> findListPago(){
+    public List<Pago> findListPago(){
        return ctrP.findListPago();
+    }
+
+    public List<PriceList> findListPriceByTrainingAndFrequency(Training en, Frequency frec) {
+        return ctrP.findListPriceByTrainingAndFrequency(en, frec);
     }
 }

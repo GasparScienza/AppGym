@@ -122,6 +122,11 @@ public class CtrPersistence {
         ArrayList<AlEntr> listF = new ArrayList(l);
         return listF;
     }
+    public ArrayList<AlEntr> findAlELetra(String letra) {
+        List<AlEntr> l = alEntr.findAlELetra(letra);
+        ArrayList<AlEntr> listaAlE = new ArrayList(l);
+        return listaAlE;
+    }
     //-------------PriceList-------------
     public void addPrice(PriceList p) {
         price.create(p);
@@ -160,5 +165,8 @@ public class CtrPersistence {
     public List<Pago> findListPago() {
         return pag.findPagoEntities();
     }
-    
+
+    public List<PriceList> findListPriceByTrainingAndFrequency(Training entrenamiento, Frequency frecuencia) {
+        return pag.findListPriceByTrainingAndFrequency(entrenamiento, frecuencia);
+    }
 }

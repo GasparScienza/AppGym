@@ -4,9 +4,11 @@ import com.mycompany.appgym.logica.AlEntr;
 import com.mycompany.appgym.logica.Alumno;
 import com.mycompany.appgym.logica.Controladora;
 import com.mycompany.appgym.logica.Pago;
+import com.mycompany.appgym.logica.PriceList;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -17,7 +19,6 @@ import javax.swing.table.TableColumn;
 public class addPago extends javax.swing.JFrame {
     Controladora ctrP = null;
     DefaultTableModel modeloTabla = null;
-    Alumno alu = null;
     AlEntr al = null;
     Pago p = null;
 
@@ -30,7 +31,7 @@ public class addPago extends javax.swing.JFrame {
     
     public void actTabla() {
         ctrP = new Controladora();
-        this.columns(ctrP.findListAlumno());
+        this.columns(ctrP.findListAlE());
     }
     
     
@@ -255,7 +256,8 @@ public class addPago extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAdd))))
+                        .addComponent(btnAdd)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,7 +281,7 @@ public class addPago extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFindAlActionPerformed
      
     private void jtbAlMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbAlMouseClicked
-        alu = new Alumno();
+        al = new AlEntr();
         //Controlar que la tabla no este vacia
         if(jtbAl.getRowCount() > 0){
             //Controlar la seleccion de alumno
@@ -287,17 +289,16 @@ public class addPago extends javax.swing.JFrame {
                 //me guarda el id que esta en la columna 0 de la fila seleccionada
                 int idAl = Integer.parseInt(String.valueOf(jtbAl.getValueAt(jtbAl.getSelectedRow(), 0)));
                 // Obtener el objeto Alumno correspondiente a la fila seleccionada
-                alu = ctrP.findAlumno(idAl);
-                //alu.setId(idAl);
+                al = ctrP.findAlE(idAl);
             }else {
                 msj("No Selecciono ningun Alumno","Error","Error");
             }
         }else {
             msj("No hay Alumnos","Error","Error");
         }
-        this.txtAl.setText(alu.getSurname() + " " + alu.getName());
+        this.txtAl.setText(al.getAlu().getSurname() + " " + al.getAlu().getName());
     }//GEN-LAST:event_jtbAlMouseClicked
-    private void columns(ArrayList<Alumno> lista){
+    private void columns(ArrayList<AlEntr> lista){
 	modeloTabla = new DefaultTableModel(){
          @Override
          public boolean isCellEditable(int row, int column){
@@ -308,11 +309,9 @@ public class addPago extends javax.swing.JFrame {
         String titulo[] = {"Id","Apellido","Nombre"};
         modeloTabla.setColumnIdentifiers(titulo);        
         if (lista != null) {
-            for (Alumno a : lista) {
-                if(a.isAssociate()){
-                    Object[] rowData = {a.getId(), a.getSurname(), a.getName()};
-                    modeloTabla.addRow(rowData);
-                }
+            for (AlEntr a : lista) {
+                Object[] rowData = {a.getId(), a.getAlu().getSurname(), a.getAlu().getName()};
+                modeloTabla.addRow(rowData);
             }
         }
             // Asignar el modelo de tabla actualizado a la tabla
@@ -337,11 +336,22 @@ public class addPago extends javax.swing.JFrame {
         if(txtAl.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Los campos obligatorios no fueron completados");
         }else{
+            PriceList pr = new PriceList();
+            p = new Pago();
+            
+            List<PriceList> lP = ctrP.findListPrice();
+            if (!lP.isEmpty()) {
+            // Obtener el último precio de la lista
+            PriceList uPr = lP.get(lP.size() - 1);
+            }
+            
+            
             String fechaIn = txtFecha.getText(); 
             LocalDate fechai = LocalDate.parse(fechaIn); 
             java.sql.Date fecha = java.sql.Date.valueOf(fechai);
-            p = new Pago();
-            p.setAl(alu);
+            
+            //p.calMonto(pr);
+            p.setAlE(al);
             p.setDate(fecha);
             p.setObs(txtDesc.getText());
             ctrP.addPago(p);
@@ -357,7 +367,7 @@ public class addPago extends javax.swing.JFrame {
         if("".equals(letra)){
             actTabla();
         }else{
-            this.columns(ctrP.findAlLetra(letra));
+            this.columns(ctrP.findAlELetra(letra));
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

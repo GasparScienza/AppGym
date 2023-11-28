@@ -1,6 +1,11 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.mycompany.appgym.persistencia;
 
 import com.mycompany.appgym.logica.AlEntr;
+import com.mycompany.appgym.logica.Alumno;
 import com.mycompany.appgym.persistencia.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;
@@ -9,21 +14,44 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Root;
 
+/**
+ *
+ * @author Gasparcitoh
+ */
 public class AlEntrJpaController implements Serializable {
 
     public AlEntrJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    public AlEntrJpaController(){
-        emf = Persistence.createEntityManagerFactory("AppGymPU");
-    }
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
+    }
+    public AlEntrJpaController(){
+        emf = Persistence.createEntityManagerFactory("AppGymPU");
+    }
+    public List<AlEntr> findAlELetra(String letra) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<AlEntr> query = cb.createQuery(AlEntr.class);
+            Root<AlEntr> root = query.from(AlEntr.class);
+
+            // En este caso, asumiré que AlEntr tiene un atributo llamado "alumno" de tipo Alumno
+            Join<AlEntr, Alumno> alumnoJoin = root.join("alu");
+
+            query.where(cb.like(cb.lower(alumnoJoin.get("name")), letra.toLowerCase() + "%"));
+
+            return em.createQuery(query).getResultList();
+        } finally {
+            em.close();
+        }
     }
 
     public void create(AlEntr alEntr) {

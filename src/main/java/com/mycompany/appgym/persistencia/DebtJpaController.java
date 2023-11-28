@@ -17,13 +17,13 @@ public class DebtJpaController implements Serializable {
     public DebtJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    public DebtJpaController(){
-        emf = Persistence.createEntityManagerFactory("AppGymPU");
-    }
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
+    }
+    public DebtJpaController(){
+        emf = Persistence.createEntityManagerFactory("AppGymPU");
     }
 
     public void create(Debt debt) {

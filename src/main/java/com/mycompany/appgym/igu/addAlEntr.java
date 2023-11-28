@@ -4,7 +4,11 @@ import com.mycompany.appgym.logica.AlEntr;
 import com.mycompany.appgym.logica.Alumno;
 import com.mycompany.appgym.logica.Controladora;
 import com.mycompany.appgym.logica.Frequency;
+import com.mycompany.appgym.logica.Pago;
+import com.mycompany.appgym.logica.PriceList;
 import com.mycompany.appgym.logica.Training;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,12 +23,16 @@ public class addAlEntr extends javax.swing.JFrame {
     Controladora ctrP = null;
     DefaultTableModel modeloTabla = null;
     Alumno alu = null;
+    Pago p = null;
+    AlEntr alE = null;
     
     public addAlEntr() {
         initComponents();
         this.setResizable(false);
         actTabla();
         configurarComboBox();
+        txtMonto.disable();
+        txtAl.disable();
     }
     private void configurarComboBox() {
         // Método para cargar la lista de entrenamientos en el ComboBox
@@ -77,7 +85,14 @@ public class addAlEntr extends javax.swing.JFrame {
         lblFechaPago3 = new javax.swing.JLabel();
         cbmTraining = new javax.swing.JComboBox<>();
         cbmFreq = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        txtFecha = new javax.swing.JTextField();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        lblFechaPago4 = new javax.swing.JLabel();
+        lblFechaPago5 = new javax.swing.JLabel();
+        txtDesc = new javax.swing.JTextField();
+        lblFechaPago6 = new javax.swing.JLabel();
+        txtMonto = new javax.swing.JTextField();
+        Salir = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -166,14 +181,60 @@ public class addAlEntr extends javax.swing.JFrame {
         lblFechaPago3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblFechaPago3.setText("*Frecuencia:");
 
-        cbmTraining.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
+        cbmTraining.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbmTrainingItemStateChanged(evt);
+            }
+        });
         cbmTraining.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbmTrainingActionPerformed(evt);
             }
         });
 
-        cbmFreq.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
+        cbmFreq.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbmFreqActionPerformed(evt);
+            }
+        });
+
+        txtFecha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtFechaFocusLost(evt);
+            }
+        });
+
+        jDateChooser1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jDateChooser1FocusLost(evt);
+            }
+        });
+        jDateChooser1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jDateChooser1PropertyChange(evt);
+            }
+        });
+
+        lblFechaPago4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFechaPago4.setText("*Fecha");
+
+        lblFechaPago5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFechaPago5.setText("Descripcion:");
+
+        txtDesc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDescActionPerformed(evt);
+            }
+        });
+
+        lblFechaPago6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFechaPago6.setText("Monto:");
+
+        txtMonto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMontoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -183,17 +244,34 @@ public class addAlEntr extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblFechaPago1)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtAl))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblFechaPago2)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbmTraining, 0, 142, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(lblFechaPago3)
                         .addGap(18, 18, 18)
-                        .addComponent(cbmFreq, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(cbmFreq, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblFechaPago2)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbmTraining, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblFechaPago4)
+                        .addGap(62, 62, 62)
+                        .addComponent(txtFecha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 10, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(lblFechaPago1)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtAl, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(lblFechaPago5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(lblFechaPago6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -202,23 +280,36 @@ public class addAlEntr extends javax.swing.JFrame {
                 .addGap(79, 79, 79)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaPago1)
-                    .addComponent(txtAl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(cbmTraining, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                        .addGap(1, 1, 1))
+                    .addComponent(txtAl, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbmTraining, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblFechaPago2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaPago3)
-                    .addComponent(cbmFreq, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
-                .addGap(163, 163, 163))
+                    .addComponent(cbmFreq, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                .addGap(11, 11, 11)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblFechaPago4)))
+                .addGap(12, 12, 12)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFechaPago5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFechaPago6))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Salir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Salir.setText("Salir");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                SalirActionPerformed(evt);
             }
         });
 
@@ -237,34 +328,34 @@ public class addAlEntr extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(Salir)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAdd))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 384, Short.MAX_VALUE)
+                        .addGap(0, 450, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(12, 12, 12)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(312, Short.MAX_VALUE)))
+                    .addContainerGap(388, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(Salir)
                     .addComponent(btnAdd))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(73, Short.MAX_VALUE)))
+                    .addContainerGap(58, Short.MAX_VALUE)))
         );
 
         pack();
@@ -301,6 +392,7 @@ public class addAlEntr extends javax.swing.JFrame {
             msj("No hay Alumnos","Error","Error");
         }
         this.txtAl.setText(alu.getSurname() + " " + alu.getName());
+        calMont();
     }//GEN-LAST:event_jtbAlMouseClicked
 
     private void txtAlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAlActionPerformed
@@ -308,27 +400,30 @@ public class addAlEntr extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAlActionPerformed
 
     private void cbmTrainingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmTrainingActionPerformed
-
+        calMont();
     }//GEN-LAST:event_cbmTrainingActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_SalirActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        if(txtAl.getText().isEmpty()|| cbmFreq.getSelectedItem() == "..." || cbmTraining.getSelectedItem() == "..."){
+        if(txtAl.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Los campos obligatorios no fueron completados");
-        }else{
-            AlEntr alE = new AlEntr();
-            alE.setAlu(alu);
-
+        }else{         
+            String fechaIn = txtFecha.getText(); 
+            LocalDate fechai = LocalDate.parse(fechaIn); 
+            java.sql.Date fecha = java.sql.Date.valueOf(fechai);
+            
             alu.setAssociate(true);
-            ctrP.edAl(alu);
+            alE.setAlu(alu);
             alE.setBaja(false);
-            Training entr = this.nameEntr();
-            alE.setEntr(entr);
-            Frequency frec = this.nameFrec();
-            alE.setFrec(frec);
+            
+            p.setDate(fecha);
+            p.setObs(txtDesc.getText());
+            
+            ctrP.addPago(p);
+            ctrP.edAl(alu);
             ctrP.addAlE(alE);
             txtAl.setText("");
             JOptionPane.showMessageDialog(null, "Guardado con exito");
@@ -336,6 +431,56 @@ public class addAlEntr extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void txtFechaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtFechaFocusLost
+        String fechaingr = txtFecha.getText();
+        if (fechaingr.length() == 8) {
+            String formattedFecha = fechaingr.substring(0, 4) + "-" + fechaingr.substring(4, 6) + "-" + fechaingr.substring(6,8);
+            txtFecha.setText(formattedFecha);
+        }
+    }//GEN-LAST:event_txtFechaFocusLost
+
+    private void jDateChooser1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jDateChooser1FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDateChooser1FocusLost
+
+    private void jDateChooser1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jDateChooser1PropertyChange
+        java.util.Date fechaSeleccionada = jDateChooser1.getDate();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        // Verifica si se ha seleccionado una fecha
+        if (fechaSeleccionada != null) {
+            String f = dateFormat.format(fechaSeleccionada);
+            txtFecha.setText(f);
+        }
+    }//GEN-LAST:event_jDateChooser1PropertyChange
+    
+    public void calMont(){      
+        alE = new AlEntr();
+        p = new Pago();
+        Training entr = this.nameEntr();
+        alE.setEntr(entr);
+        Frequency frec = this.nameFrec();
+        alE.setFrec(frec);
+            
+        p.setAlE(alE);
+        p.calMontoPPago(alE);
+        txtMonto.setText(String.valueOf(p.getMonto()));
+    }
+    private void txtDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescActionPerformed
+
+    private void cbmFreqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbmFreqActionPerformed
+        calMont();
+    }//GEN-LAST:event_cbmFreqActionPerformed
+
+    private void txtMontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMontoActionPerformed
+        
+    }//GEN-LAST:event_txtMontoActionPerformed
+
+    private void cbmTrainingItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbmTrainingItemStateChanged
+        
+    }//GEN-LAST:event_cbmTrainingItemStateChanged
     private void columns(ArrayList<Alumno> lista){
 	modeloTabla = new DefaultTableModel(){
          @Override
@@ -363,6 +508,7 @@ public class addAlEntr extends javax.swing.JFrame {
             colum.setPreferredWidth(0);
             colum.setWidth(0);
     }
+    
     private Training nameEntr(){
         String nombreSeleccionado = (String) cbmTraining.getSelectedItem();
         return mapEntrenamientos.get(nombreSeleccionado);
@@ -374,11 +520,13 @@ public class addAlEntr extends javax.swing.JFrame {
    
     private Map<String, Training> mapEntrenamientos = new HashMap<>();
     private Map<String, Frequency> mapFrec = new HashMap<>();
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Salir;
     private javax.swing.JButton btnAdd;
     private javax.swing.JComboBox<String> cbmFreq;
     private javax.swing.JComboBox<String> cbmTraining;
-    private javax.swing.JButton jButton1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -388,7 +536,13 @@ public class addAlEntr extends javax.swing.JFrame {
     private javax.swing.JLabel lblFechaPago1;
     private javax.swing.JLabel lblFechaPago2;
     private javax.swing.JLabel lblFechaPago3;
+    private javax.swing.JLabel lblFechaPago4;
+    private javax.swing.JLabel lblFechaPago5;
+    private javax.swing.JLabel lblFechaPago6;
     private javax.swing.JTextField txtAl;
+    private javax.swing.JTextField txtDesc;
+    private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtFindAl;
+    private javax.swing.JTextField txtMonto;
     // End of variables declaration//GEN-END:variables
 }

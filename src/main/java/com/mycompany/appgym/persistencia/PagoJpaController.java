@@ -4,7 +4,10 @@
  */
 package com.mycompany.appgym.persistencia;
 
+import com.mycompany.appgym.logica.Frequency;
 import com.mycompany.appgym.logica.Pago;
+import com.mycompany.appgym.logica.PriceList;
+import com.mycompany.appgym.logica.Training;
 import com.mycompany.appgym.persistencia.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;
@@ -13,7 +16,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 /**
@@ -32,6 +37,25 @@ public class PagoJpaController implements Serializable {
     }
     public PagoJpaController(){
         emf = Persistence.createEntityManagerFactory("AppGymPU");
+    }
+    public List<PriceList> findListPriceByTrainingAndFrequency(Training entrenamiento, Frequency frecuencia) {
+       EntityManager em = getEntityManager();
+        try {
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<PriceList> query = cb.createQuery(PriceList.class);
+            Root<PriceList> root = query.from(PriceList.class);
+
+            // Agregar condiciones para entrenamiento y frecuencia
+            Predicate condition = cb.and(
+                cb.equal(root.get("en"), entrenamiento),
+                cb.equal(root.get("frec"), frecuencia)
+            );
+            query.where(condition);
+
+            return em.createQuery(query).getResultList();
+        } finally {
+            em.close();
+        } 
     }
 
     public void create(Pago pago) {
