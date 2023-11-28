@@ -422,9 +422,10 @@ public class addAlEntr extends javax.swing.JFrame {
             p.setDate(fecha);
             p.setObs(txtDesc.getText());
             
-            ctrP.addPago(p);
             ctrP.edAl(alu);
             ctrP.addAlE(alE);
+            ctrP.addPago(p);
+            
             txtAl.setText("");
             JOptionPane.showMessageDialog(null, "Guardado con exito");
             this.actTabla();

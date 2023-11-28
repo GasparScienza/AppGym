@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class Pago implements Serializable {
-    Controladora ctrP = new Controladora();
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -30,6 +30,7 @@ public class Pago implements Serializable {
     private float monto;
     
     public void calMontoPPago(AlEntr al) {
+        Controladora ctrP = new Controladora();
         // Obtener el entrenamiento y la frecuencia asociados a AlEntr
         Training entrenamiento = al.getEntr();
         Frequency frecuencia = al.getFrec();
@@ -56,14 +57,6 @@ public class Pago implements Serializable {
         this.date = date;
         this.obs = obs;
         this.monto = monto;
-    }
-
-    public Controladora getCtrP() {
-        return ctrP;
-    }
-
-    public void setCtrP(Controladora ctrP) {
-        this.ctrP = ctrP;
     }
 
     public int getId() {

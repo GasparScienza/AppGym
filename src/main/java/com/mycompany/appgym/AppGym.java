@@ -13,7 +13,7 @@ import java.util.Date;
 public class AppGym {
 
     public static void main(String[] args) {
-        /**
+        
         CtrPersistence ctrP = new CtrPersistence();
         Date fechaActual = new Date();
         Alumno al = new Alumno(1,"Gaspar","Scienza","Hola",false,fechaActual);
@@ -31,12 +31,12 @@ public class AppGym {
         ctrP.addTr(tr);
         ctrP.addTr(tr1);
         
-        
+        /**
         AlEntr alE = new AlEntr(1, al1, tr, frec, false);
         AlEntr alE1 = new AlEntr(2, al, tr, frec1, false);
         ctrP.addAlE(alE);
         ctrP.addAlE(alE1);
-        
+        **/
         
         PriceList pr1 = new PriceList(1, frec, tr, 5000, fechaActual);
         PriceList pr2 = new PriceList(2, frec1, tr, 6000, fechaActual);
@@ -52,16 +52,19 @@ public class AppGym {
         ctrP.addPrice(pr4);
         ctrP.addPrice(pr5);
         ctrP.addPrice(pr6);
-        **/
-        //Pago p = new Pago();
+        
         /**
+        Pago p = new Pago();
+        
         p.setAlE(alE1);
         p.setDate(fechaActual);
         p.calMontoPPago(alE1);
         float monto = p.getMonto();
         p.setMonto(monto);
         System.out.println(" " + monto);
+        ctrP.addPago(p);
         **/
+        
         
         
         
@@ -71,10 +74,9 @@ public class AppGym {
                 
         
         
-        
+   
         Principal prin = new Principal();
         prin.setVisible(true);
         prin.setLocationRelativeTo(null);
-
     }
 }
