@@ -13,7 +13,6 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jbtAddFrec1 = new javax.swing.JButton();
-        jbtAddFrec4 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -33,12 +32,8 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jbtAddFrec4.setText("Alumnos");
-        jbtAddFrec4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtAddFrec4ActionPerformed(evt);
-            }
-        });
+        jMenuBar1.setFocusable(false);
+        jMenuBar1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jMenu1.setText("Sistema");
 
@@ -84,9 +79,14 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("fdgdfg");
+        jMenu2.setText("Visualizar");
 
-        jMenuItem6.setText("jMenuItem6");
+        jMenuItem6.setText("Alumnos");
+        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem6ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem6);
 
         jMenuBar1.add(jMenu2);
@@ -98,9 +98,7 @@ public class Principal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(152, 152, 152)
-                .addComponent(jbtAddFrec4)
-                .addGap(18, 18, 18)
+                .addGap(248, 248, 248)
                 .addComponent(jbtAddFrec1)
                 .addContainerGap(215, Short.MAX_VALUE))
         );
@@ -108,10 +106,8 @@ public class Principal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(163, 163, 163)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtAddFrec4)
-                    .addComponent(jbtAddFrec1))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addComponent(jbtAddFrec1)
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         pack();
@@ -122,12 +118,6 @@ public class Principal extends javax.swing.JFrame {
         alEntr.setVisible(true);
         alEntr.setLocationRelativeTo(null);
     }//GEN-LAST:event_jbtAddFrec1ActionPerformed
-
-    private void jbtAddFrec4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtAddFrec4ActionPerformed
-        ListAl l = new ListAl();
-        l.setVisible(true);
-        l.setLocationRelativeTo(null);
-    }//GEN-LAST:event_jbtAddFrec4ActionPerformed
     //Agregar Alumno
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         AddAlum a = new AddAlum();
@@ -158,6 +148,12 @@ public class Principal extends javax.swing.JFrame {
         pag.setVisible(true);
         pag.setLocationRelativeTo(null);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
+    //Ver alumnos
+    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+        ListAl l = new ListAl();
+        l.setVisible(true);
+        l.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
@@ -170,6 +166,5 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JButton jbtAddFrec1;
-    private javax.swing.JButton jbtAddFrec4;
     // End of variables declaration//GEN-END:variables
 }

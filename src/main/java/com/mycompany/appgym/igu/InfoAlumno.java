@@ -77,6 +77,7 @@ public class InfoAlumno extends javax.swing.JFrame {
         setTitle("AyM Gym");
         setResizable(false);
 
+        tblInfoAl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tblInfoAl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -105,6 +106,7 @@ public class InfoAlumno extends javax.swing.JFrame {
         jLabel3.setText("Historial de Pago Alumno");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        btnVolverP.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnVolverP.setText("Volver");
         btnVolverP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +114,7 @@ public class InfoAlumno extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton1.setText("Eliminar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

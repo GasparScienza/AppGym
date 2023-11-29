@@ -94,7 +94,7 @@ public class addPago extends javax.swing.JFrame {
         jpAl.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jpAl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        jtbAl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jtbAl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jtbAl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},

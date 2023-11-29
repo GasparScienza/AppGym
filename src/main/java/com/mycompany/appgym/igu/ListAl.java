@@ -35,12 +35,12 @@ public class ListAl extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AyM Gym");
 
-        lblAlumnos.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblAlumnos.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblAlumnos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAlumnos.setText("Alumnos");
 
         jtbAlumnos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jtbAlumnos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jtbAlumnos.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jtbAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -59,6 +59,7 @@ public class ListAl extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jtbAlumnos);
 
+        btnDelAlumno.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnDelAlumno.setText("Dar de baja");
         btnDelAlumno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,6 +67,7 @@ public class ListAl extends javax.swing.JFrame {
             }
         });
 
+        btnBuscarAl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnBuscarAl.setText("Buscar");
         btnBuscarAl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +75,9 @@ public class ListAl extends javax.swing.JFrame {
             }
         });
 
+        txtBuscAl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton2.setText("Ver Historial");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,6 +85,7 @@ public class ListAl extends javax.swing.JFrame {
             }
         });
 
+        btnVolverP.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnVolverP.setText("Volver");
         btnVolverP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,14 +102,14 @@ public class ListAl extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnVolverP)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 716, Short.MAX_VALUE)
+                        .addGap(0, 633, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3)
                     .addComponent(lblAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
-                        .addComponent(btnDelAlumno, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDelAlumno)
                         .addGap(18, 18, 18)
                         .addComponent(btnBuscarAl)
                         .addGap(18, 18, 18)
