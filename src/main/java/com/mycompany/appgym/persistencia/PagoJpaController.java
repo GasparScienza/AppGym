@@ -4,6 +4,9 @@
  */
 package com.mycompany.appgym.persistencia;
 
+import com.mycompany.appgym.logica.AlEntr;
+import com.mycompany.appgym.logica.Alumno;
+
 import com.mycompany.appgym.logica.Frequency;
 import com.mycompany.appgym.logica.Pago;
 import com.mycompany.appgym.logica.PriceList;
@@ -16,8 +19,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
@@ -38,6 +43,47 @@ public class PagoJpaController implements Serializable {
     public PagoJpaController(){
         emf = Persistence.createEntityManagerFactory("AppGymPU");
     }
+    
+    public Pago obtenerUltimoPagoPorAlumno(int idAlumno) {
+        EntityManager em = getEntityManager();
+
+        try {
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<Pago> cq = cb.createQuery(Pago.class);
+            Root<Pago> pagoRoot = cq.from(Pago.class);
+            Join<Pago, Alumno> alumnoJoin = pagoRoot.join("alE"); // Reemplaza "alE" con el nombre real de la asociación
+
+            cq.select(pagoRoot)
+                    .where(cb.equal(alumnoJoin.get("id"), idAlumno))
+                    .orderBy(cb.desc(pagoRoot.get("date")));
+
+            List<Pago> resultados = em.createQuery(cq)
+                    .setMaxResults(1)
+                    .getResultList();
+
+            return resultados.isEmpty() ? null : resultados.get(0);
+        } finally {
+            em.close();
+        }
+    }
+    
+    public List<Pago> findPagoEntities(AlEntr al) {
+        EntityManager em = getEntityManager();
+        try {
+            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaQuery<Pago> cq = cb.createQuery(Pago.class);
+            Root<Pago> pago = cq.from(Pago.class);
+
+            // Añade una condición para filtrar por el alumno específico
+            cq.where(cb.equal(pago.get("alE"), al));
+
+            TypedQuery<Pago> query = em.createQuery(cq);
+            return query.getResultList();
+        } finally {
+            em.close();
+        }
+    }
+    
     public List<PriceList> findListPriceByTrainingAndFrequency(Training entrenamiento, Frequency frecuencia) {
        EntityManager em = getEntityManager();
         try {

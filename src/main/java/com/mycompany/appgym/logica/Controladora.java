@@ -102,4 +102,10 @@ public class Controladora implements Serializable{
     public List<PriceList> findListPriceByTrainingAndFrequency(Training en, Frequency frec) {
         return ctrP.findListPriceByTrainingAndFrequency(en, frec);
     }
+    public Pago obtenerUltimoPagoPorAlumno(int idAlumno){
+        return ctrP.obtenerUltimoPagoPorAlumno(idAlumno);
+    }
+    public ArrayList<Pago> findPagoEntities(AlEntr al){
+        return ctrP.findPagoEntities(al);
+    }
 }

@@ -1,6 +1,7 @@
 
 package com.mycompany.appgym.igu;
 
+import com.mycompany.appgym.logica.AlEntr;
 import com.mycompany.appgym.logica.Alumno;
 import com.mycompany.appgym.logica.Controladora;
 import com.mycompany.appgym.logica.Pago;
@@ -13,7 +14,7 @@ import javax.swing.table.TableColumn;
 
 public class InfoAlumno extends javax.swing.JFrame {
     Controladora ctrP = null;
-    Alumno al = null;
+    AlEntr al = null;
     
     public InfoAlumno() {
         initComponents();
@@ -21,7 +22,7 @@ public class InfoAlumno extends javax.swing.JFrame {
     }
 
     public void actTabla(int id) {
-        al = new Alumno();
+        al = new AlEntr();
         float tot = 0;
 	DefaultTableModel modeloTabla = new DefaultTableModel(){
          @Override
@@ -33,20 +34,20 @@ public class InfoAlumno extends javax.swing.JFrame {
         //Nombres de Columnas
         String titulo[] = {"Id","Fecha","Monto", "Observacion"};
         modeloTabla.setColumnIdentifiers(titulo);
-        al = ctrP.findAlumno(id);
-        /**
-	ArrayList<Pago> Lista = ctrP.findListPago(al);
+        al = ctrP.findAlE(id);
+        
+	ArrayList<Pago> Lista = ctrP.findPagoEntities(al);
         if(Lista!=null){ 
             for(Pago p:Lista) {
-                Object[] rowData = {p.getId(), dateFormat.format(p.getDate()), p.getObs()};
+                Object[] rowData = {p.getId(), dateFormat.format(p.getDate()),p.getMonto() ,p.getObs()};
                 modeloTabla.addRow(rowData);
                 //tot += p.getMonto();
             }
         }  
-        **/
-        txtNombreInfo.setText(al.getName());
+        
+        txtNombreInfo.setText(al.getAlu().getName());
         txtNombreInfo.setEditable(false);
-        txtApellidoInfo.setText(al.getSurname());
+        txtApellidoInfo.setText(al.getAlu().getSurname());
         txtApellidoInfo.setEditable(false);
 	tblInfoAl.setModel(modeloTabla);
         

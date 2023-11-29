@@ -1,7 +1,6 @@
 com\mycompany\appgym\igu\addPago$6.class
 com\mycompany\appgym\igu\addAlEntr$6.class
 com\mycompany\appgym\persistencia\FrequencyJpaController.class
-com\mycompany\appgym\persistencia\DebtJpaController.class
 com\mycompany\appgym\logica\Alumno.class
 com\mycompany\appgym\igu\addPrice$2.class
 com\mycompany\appgym\igu\Principal$1.class
@@ -45,14 +44,13 @@ com\mycompany\appgym\persistencia\PriceListJpaController.class
 com\mycompany\appgym\igu\addAlEntr$7.class
 com\mycompany\appgym\igu\addPago$5.class
 com\mycompany\appgym\igu\InfoAlumno$3.class
-com\mycompany\appgym\logica\Debt.class
 com\mycompany\appgym\igu\addPrice$5.class
 com\mycompany\appgym\igu\addPago$11.class
-com\mycompany\appgym\logica\Debt_.class
 com\mycompany\appgym\igu\addFrec.class
 com\mycompany\appgym\igu\AddAlum$3.class
 com\mycompany\appgym\igu\ListAl$3.class
 com\mycompany\appgym\igu\addPago$1.class
+com\mycompany\appgym\igu\addPago$12.class
 com\mycompany\appgym\igu\addPago.class
 com\mycompany\appgym\logica\Training.class
 com\mycompany\appgym\igu\Principal$3.class

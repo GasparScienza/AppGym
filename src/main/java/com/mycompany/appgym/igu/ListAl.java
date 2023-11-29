@@ -1,5 +1,6 @@
 package com.mycompany.appgym.igu;
 
+import com.mycompany.appgym.logica.AlEntr;
 import com.mycompany.appgym.logica.Alumno;
 import com.mycompany.appgym.logica.Controladora;
 import java.text.SimpleDateFormat;
@@ -11,7 +12,7 @@ import javax.swing.table.TableColumn;
 
 public class ListAl extends javax.swing.JFrame {
     Controladora ctrP = null;
-    Alumno alu = null;
+    AlEntr alu = null;
     public ListAl() {
         initComponents();
         ctrP = new Controladora();
@@ -148,11 +149,11 @@ public class ListAl extends javax.swing.JFrame {
         String titulo[] = {"Id","Apellido","Nombre", "Observacion", "Fecha Ingreso"};
         modeloTabla.setColumnIdentifiers(titulo);
            
-	ArrayList<Alumno> Lista = ctrP.findListAlumno();
+	ArrayList<AlEntr> Lista = ctrP.findListAlE();
         if(Lista!=null){ 
-            for(Alumno a:Lista) {
-                if(a.isAssociate()== true){
-                    Object[] rowData = {a.getId(), a.getSurname(), a.getName(),  a.getObs(), dateFormat.format(a.getDate())};
+            for(AlEntr a:Lista) {
+                if(a.isBaja()!= true){
+                    Object[] rowData = {a.getId(), a.getAlu().getSurname(), a.getAlu().getName(),  a.getAlu().getObs(), dateFormat.format(a.getAlu().getDate())};
                     modeloTabla.addRow(rowData);
                 }  
             }  
@@ -244,7 +245,7 @@ public class ListAl extends javax.swing.JFrame {
 //Boton Ver historial alumno
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
-        alu = new Alumno();
+        alu = new AlEntr();
         //Controlar que la tabla no este vacia
         if(jtbAlumnos.getRowCount() > 0){
             //Controlar la seleccion de alumno

@@ -3,12 +3,16 @@ package com.mycompany.appgym.igu;
 import com.mycompany.appgym.logica.AlEntr;
 import com.mycompany.appgym.logica.Alumno;
 import com.mycompany.appgym.logica.Controladora;
+import com.mycompany.appgym.logica.Frequency;
 import com.mycompany.appgym.logica.Pago;
 import com.mycompany.appgym.logica.PriceList;
+import com.mycompany.appgym.logica.Training;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +31,8 @@ public class addPago extends javax.swing.JFrame {
         initComponents();
         this.setResizable(false);
         actTabla();
+        txtMonto.disable();      
+        txtAl.disable();
     }
     
     public void actTabla() {
@@ -67,6 +73,8 @@ public class addPago extends javax.swing.JFrame {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         txtFecha = new javax.swing.JTextField();
         txtDesc = new javax.swing.JTextField();
+        lblFechaPago6 = new javax.swing.JLabel();
+        txtMonto = new javax.swing.JTextField();
         btnAdd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -187,6 +195,15 @@ public class addPago extends javax.swing.JFrame {
             }
         });
 
+        lblFechaPago6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFechaPago6.setText("Monto:");
+
+        txtMonto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMontoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -207,13 +224,18 @@ public class addPago extends javax.swing.JFrame {
                                 .addComponent(txtAl)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblFechaPago3)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblFechaPago3)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblFechaPago6)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDesc)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txtDesc))))
+                            .addComponent(txtMonto))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -232,7 +254,11 @@ public class addPago extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblFechaPago3)
                     .addComponent(txtDesc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(165, 165, 165))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMonto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblFechaPago6))
+                .addGap(121, 121, 121))
         );
 
         btnAdd.setText("Agregar");
@@ -297,6 +323,7 @@ public class addPago extends javax.swing.JFrame {
             msj("No hay Alumnos","Error","Error");
         }
         this.txtAl.setText(al.getAlu().getSurname() + " " + al.getAlu().getName());
+        calMont();
     }//GEN-LAST:event_jtbAlMouseClicked
     private void columns(ArrayList<AlEntr> lista){
 	modeloTabla = new DefaultTableModel(){
@@ -336,24 +363,16 @@ public class addPago extends javax.swing.JFrame {
         if(txtAl.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Los campos obligatorios no fueron completados");
         }else{
-            PriceList pr = new PriceList();
-            p = new Pago();
-            
-            List<PriceList> lP = ctrP.findListPrice();
-            if (!lP.isEmpty()) {
-            // Obtener el último precio de la lista
-            PriceList uPr = lP.get(lP.size() - 1);
-            }
-            
+            p = new Pago();                        
             
             String fechaIn = txtFecha.getText(); 
             LocalDate fechai = LocalDate.parse(fechaIn); 
             java.sql.Date fecha = java.sql.Date.valueOf(fechai);
             
-            //p.calMonto(pr);
             p.setAlE(al);
             p.setDate(fecha);
             p.setObs(txtDesc.getText());
+            p.setMonto(Float.parseFloat(txtMonto.getText()));
             ctrP.addPago(p);
             txtAl.setText("");
             JOptionPane.showMessageDialog(null, "Guardado con exito");
@@ -393,10 +412,20 @@ public class addPago extends javax.swing.JFrame {
             txtFecha.setText(formattedFecha);
         }
     }//GEN-LAST:event_txtFechaFocusLost
-
+    public void calMont(){      
+        p = new Pago();
+            
+        p.setAlE(al);
+        p.calMontoPPago(al);
+        txtMonto.setText(String.valueOf(p.getMonto()));
+    }
     private void txtDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescActionPerformed
+
+    private void txtMontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMontoActionPerformed
+
+    }//GEN-LAST:event_txtMontoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -411,9 +440,11 @@ public class addPago extends javax.swing.JFrame {
     private javax.swing.JLabel lblFechaPago1;
     private javax.swing.JLabel lblFechaPago2;
     private javax.swing.JLabel lblFechaPago3;
+    private javax.swing.JLabel lblFechaPago6;
     private javax.swing.JTextField txtAl;
     private javax.swing.JTextField txtDesc;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtFindAl;
+    private javax.swing.JTextField txtMonto;
     // End of variables declaration//GEN-END:variables
 }

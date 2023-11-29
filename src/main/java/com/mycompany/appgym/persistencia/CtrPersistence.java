@@ -17,7 +17,6 @@ public class CtrPersistence {
     
     AlEntrJpaController alEntr = new AlEntrJpaController();
     AlumnoJpaController alu = new AlumnoJpaController();
-    DebtJpaController deb = new DebtJpaController();
     FrequencyJpaController frec = new FrequencyJpaController();
     PriceListJpaController price = new PriceListJpaController();
     TrainingJpaController tr = new TrainingJpaController();
@@ -168,5 +167,13 @@ public class CtrPersistence {
 
     public List<PriceList> findListPriceByTrainingAndFrequency(Training entrenamiento, Frequency frecuencia) {
         return pag.findListPriceByTrainingAndFrequency(entrenamiento, frecuencia);
+    }
+    public Pago obtenerUltimoPagoPorAlumno(int idAlumno){
+        return pag.obtenerUltimoPagoPorAlumno(idAlumno);
+    }
+    public ArrayList<Pago> findPagoEntities(AlEntr al){
+        List<Pago> l = pag.findPagoEntities(al);
+        ArrayList<Pago> listaAlE = new ArrayList(l);
+        return listaAlE;
     }
 }
