@@ -6,7 +6,9 @@ import com.mycompany.appgym.logica.Controladora;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -33,7 +35,7 @@ public class ListAl extends javax.swing.JFrame {
         btnVolverP = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("AyM Gym");
+        setTitle("CORE");
 
         lblAlumnos.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblAlumnos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -98,11 +100,11 @@ public class ListAl extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnVolverP)
-                        .addGap(0, 633, Short.MAX_VALUE))
+                        .addGap(0, 613, Short.MAX_VALUE))
                     .addComponent(jScrollPane3)
                     .addComponent(lblAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -114,12 +116,12 @@ public class ListAl extends javax.swing.JFrame {
                         .addComponent(btnBuscarAl)
                         .addGap(18, 18, 18)
                         .addComponent(txtBuscAl, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addComponent(btnVolverP)
                 .addGap(3, 3, 3)
                 .addComponent(lblAlumnos)
@@ -129,9 +131,9 @@ public class ListAl extends javax.swing.JFrame {
                     .addComponent(btnBuscarAl)
                     .addComponent(btnDelAlumno)
                     .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(16, 16, 16)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -152,14 +154,14 @@ public class ListAl extends javax.swing.JFrame {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         
         //Nombres de Columnas
-        String titulo[] = {"Id","Apellido","Nombre", "Observacion", "Fecha Ingreso"};
+        String titulo[] = {"Id","Apellido","Nombre", "Observacion", "Entrenamiento", "Frecuencia"};
         modeloTabla.setColumnIdentifiers(titulo);
-           
+          //dateFormat.format(a.getAlu().getDate()) 
 	ArrayList<AlEntr> Lista = ctrP.findListAlE();
         if(Lista!=null){ 
             for(AlEntr a:Lista) {
                 if(a.isBaja()!= true){
-                    Object[] rowData = {a.getId(), a.getAlu().getSurname(), a.getAlu().getName(),  a.getAlu().getObs(), dateFormat.format(a.getAlu().getDate())};
+                    Object[] rowData = {a.getId(), a.getAlu().getSurname(), a.getAlu().getName(),  a.getAlu().getObs(), a.getEntr().getName(), a.getFrec().getType()};
                     modeloTabla.addRow(rowData);
                 }  
             }  
@@ -171,7 +173,14 @@ public class ListAl extends javax.swing.JFrame {
         colum.setMinWidth(0);
         colum.setMaxWidth(0);
         colum.setPreferredWidth(0);
-        colum.setWidth(0);   
+        colum.setWidth(0);  
+        
+        // Centra los valores en todas las celdas de la tabla
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < jtbAlumnos.getColumnCount(); i++) {
+        jtbAlumnos.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
     }
     private void jtbAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbAlumnosMouseClicked
         

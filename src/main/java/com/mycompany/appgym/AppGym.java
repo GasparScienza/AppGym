@@ -1,5 +1,6 @@
 package com.mycompany.appgym;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
@@ -80,7 +81,7 @@ public class AppGym {
              * ctrP.addPago(p);
              **/
         try {    
-            UIManager.setLookAndFeel(new FlatIntelliJLaf());
+            UIManager.setLookAndFeel(new FlatDarculaLaf());
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(AppGym.class.getName()).log(Level.SEVERE, null, ex);
         }  

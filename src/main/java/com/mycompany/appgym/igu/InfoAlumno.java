@@ -8,7 +8,9 @@ import com.mycompany.appgym.logica.Pago;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -57,6 +59,13 @@ public class InfoAlumno extends javax.swing.JFrame {
         colum.setMaxWidth(0);
         colum.setPreferredWidth(0);
         colum.setWidth(0); 
+        
+        // Centra los valores en todas las celdas de la tabla
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < tblInfoAl.getColumnCount(); i++) {
+            tblInfoAl.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -74,7 +83,7 @@ public class InfoAlumno extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("AyM Gym");
+        setTitle("CORE");
         setResizable(false);
 
         tblInfoAl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -91,9 +100,9 @@ public class InfoAlumno extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblInfoAl);
 
-        txtNombreInfo.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtNombreInfo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
-        txtApellidoInfo.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtApellidoInfo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Nombre:");
@@ -103,7 +112,7 @@ public class InfoAlumno extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Historial de Pago Alumno");
+        jLabel3.setText("Historial de Pago ");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         btnVolverP.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -127,7 +136,7 @@ public class InfoAlumno extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -148,12 +157,12 @@ public class InfoAlumno extends javax.swing.JFrame {
                                         .addComponent(txtApellidoInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(6, 6, 6))))
+                        .addGap(16, 16, 16))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addGap(16, 16, 16)
                 .addComponent(btnVolverP)
                 .addGap(6, 6, 6)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,9 +177,9 @@ public class InfoAlumno extends javax.swing.JFrame {
                             .addComponent(jLabel2))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
+                .addGap(16, 16, 16)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();

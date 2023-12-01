@@ -82,7 +82,7 @@ public class Controladora implements Serializable{
     public PriceList findPrice(int id){
        return ctrP.findPrice(id);
     }   
-   public List<PriceList> findListPrice(){
+   public ArrayList<PriceList> findListPrice(){
        return ctrP.findListPrice();
     }
    //-------------Pago-------------

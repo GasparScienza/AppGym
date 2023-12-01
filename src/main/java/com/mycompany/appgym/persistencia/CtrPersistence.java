@@ -142,8 +142,10 @@ public class CtrPersistence {
          return price.findPriceList(id);
     }
 
-    public List<PriceList> findListPrice() {
-        return price.findPriceListEntities();
+    public ArrayList<PriceList> findListPrice() {
+        List<PriceList> l = price.findPriceListEntities();
+        ArrayList<PriceList> listPrice = new ArrayList(l);
+        return listPrice;
     }
     //-------------pago-------------
     public void addPago(Pago p) {
