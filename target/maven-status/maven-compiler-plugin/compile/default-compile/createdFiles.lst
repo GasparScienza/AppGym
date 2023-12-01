@@ -37,7 +37,6 @@ com\mycompany\appgym\igu\addPrice$4.class
 com\mycompany\appgym\persistencia\PagoJpaController.class
 com\mycompany\appgym\igu\ListPrice$1.class
 com\mycompany\appgym\igu\addPago$4.class
-com\mycompany\appgym\igu\ListAl$7.class
 com\mycompany\appgym\AppGym.class
 com\mycompany\appgym\persistencia\exceptions\IllegalOrphanException.class
 com\mycompany\appgym\igu\addTraining$2.class

@@ -200,6 +200,7 @@ public class InfoAlumno extends javax.swing.JFrame {
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
     }
+    // boton eliminar
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         /**
         //Controlar que la tabla no este vacia

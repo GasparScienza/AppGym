@@ -14,6 +14,7 @@ import javax.swing.table.TableColumn;
 
 public class ListAl extends javax.swing.JFrame {
     Controladora ctrP = null;
+    DefaultTableModel modeloTabla = null;
     AlEntr alu = null;
     public ListAl() {
         initComponents();
@@ -144,43 +145,7 @@ public class ListAl extends javax.swing.JFrame {
 	txtBuscAl.setText("");
     }
     public void actTabla() {
-	DefaultTableModel modeloTabla = new DefaultTableModel(){
-         @Override
-         public boolean isCellEditable(int row, int column){
-                return false;
-            }
-        };
-        
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        
-        //Nombres de Columnas
-        String titulo[] = {"Id","Apellido","Nombre", "Observacion", "Entrenamiento", "Frecuencia"};
-        modeloTabla.setColumnIdentifiers(titulo);
-          //dateFormat.format(a.getAlu().getDate()) 
-	ArrayList<AlEntr> Lista = ctrP.findListAlE();
-        if(Lista!=null){ 
-            for(AlEntr a:Lista) {
-                if(a.isBaja()!= true){
-                    Object[] rowData = {a.getId(), a.getAlu().getSurname(), a.getAlu().getName(),  a.getAlu().getObs(), a.getEntr().getName(), a.getFrec().getType()};
-                    modeloTabla.addRow(rowData);
-                }  
-            }  
-        }     
-	jtbAlumnos.setModel(modeloTabla);
-        
-        //Oculto la columna 0 del id de alumno para que no se vea en la pantalla
-        TableColumn colum = jtbAlumnos.getColumnModel().getColumn(0);
-        colum.setMinWidth(0);
-        colum.setMaxWidth(0);
-        colum.setPreferredWidth(0);
-        colum.setWidth(0);  
-        
-        // Centra los valores en todas las celdas de la tabla
-        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
-        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
-        for (int i = 0; i < jtbAlumnos.getColumnCount(); i++) {
-        jtbAlumnos.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
-        }
+        this.columns(ctrP.findListAlE());
     }
     private void jtbAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtbAlumnosMouseClicked
         
@@ -215,47 +180,49 @@ public class ListAl extends javax.swing.JFrame {
         }
         **/
     }//GEN-LAST:event_btnDelAlumnoActionPerformed
-
-    private void btnBuscarAlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAlActionPerformed
-        String letra = txtBuscAl.getText().trim();
-
-        if(letra == ""){
-            actTabla();
-        }else{
-            DefaultTableModel modeloTabla = new DefaultTableModel() {
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    return false;
-                }
-            };
-
-            //Nombres de Columnas
-            String titulo[] = {"Id","Apellido","Nombre", "Observacion", "Fecha Ingreso"};
-            modeloTabla.setColumnIdentifiers(titulo);
-
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
-            ArrayList<Alumno> lista = ctrP.findAlLetra(letra);
-
-            if (lista != null) {
-                for (Alumno a : lista) {
-                    if(a.isAssociate()== true){
-                        Object[] rowData = {a.getId(), a.getSurname(), a.getName(),  a.getObs(), dateFormat.format(a.getDate())};
-                        modeloTabla.addRow(rowData);
-                    }
-                }
+    
+    private void columns(ArrayList<AlEntr> lista){
+	modeloTabla = new DefaultTableModel(){
+         @Override
+         public boolean isCellEditable(int row, int column){
+                return false;
             }
-
-            // Asignar el modelo de tabla actualizado a tu tabla
-            jtbAlumnos.setModel(modeloTabla); // Reemplaza 'tuTabla' con el nombre de tu tabla
-
-            //Oculto la columna 0 del id de alumno para que no se vea en la pantalla
+        };
+        //Nombres de Columnas
+        String titulo[] = {"Id","Apellido","Nombre", "Observacion", "Entrenamiento", "Frecuencia"};
+        modeloTabla.setColumnIdentifiers(titulo);        
+        if(lista!=null){ 
+            for(AlEntr a:lista) {
+                if(a.isBaja()!= true){
+                    Object[] rowData = {a.getId(), a.getAlu().getSurname(), a.getAlu().getName(),  a.getAlu().getObs(), a.getEntr().getName(), a.getFrec().getType()};
+                    modeloTabla.addRow(rowData);
+                }  
+            }  
+        }     
+        // Asignar el modelo de tabla actualizado a tu tabla
+        jtbAlumnos.setModel(modeloTabla);
+        //Oculto la columna 0 del id de alumno para que no se vea en la pantalla
             TableColumn colum = jtbAlumnos.getColumnModel().getColumn(0);
             colum.setMinWidth(0);
             colum.setMaxWidth(0);
             colum.setPreferredWidth(0);
             colum.setWidth(0);
+            
+        // Centra los valores en todas las celdas de la tabla
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(JLabel.CENTER);
+        for (int i = 0; i < jtbAlumnos.getColumnCount(); i++) {
+            jtbAlumnos.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
         }
+    }
+    
+    private void btnBuscarAlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarAlActionPerformed
+        String letra = txtBuscAl.getText().trim();
+        if("".equals(letra)){
+            actTabla();
+        }else{
+            this.columns(ctrP.findAlELetra(letra));
+        }       
     }//GEN-LAST:event_btnBuscarAlActionPerformed
 //Boton Ver historial alumno
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
