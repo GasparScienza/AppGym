@@ -39,7 +39,7 @@ public class addPrice extends javax.swing.JFrame {
         lblFechaPago4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CORE");
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N

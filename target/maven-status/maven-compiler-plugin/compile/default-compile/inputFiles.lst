@@ -13,6 +13,7 @@ C:\Users\Gasparcitoh\Documents\NetBeansProjects\AppGym\src\main\java\com\mycompa
 C:\Users\Gasparcitoh\Documents\NetBeansProjects\AppGym\src\main\java\com\mycompany\appgym\logica\AlEntr.java
 C:\Users\Gasparcitoh\Documents\NetBeansProjects\AppGym\src\main\java\com\mycompany\appgym\persistencia\exceptions\NonexistentEntityException.java
 C:\Users\Gasparcitoh\Documents\NetBeansProjects\AppGym\src\main\java\com\mycompany\appgym\persistencia\FrequencyJpaController.java
+C:\Users\Gasparcitoh\Documents\NetBeansProjects\AppGym\src\main\java\com\mycompany\appgym\igu\edPrice.java
 C:\Users\Gasparcitoh\Documents\NetBeansProjects\AppGym\src\main\java\com\mycompany\appgym\igu\InfoAlumno.java
 C:\Users\Gasparcitoh\Documents\NetBeansProjects\AppGym\src\main\java\com\mycompany\appgym\persistencia\AlumnoJpaController.java
 C:\Users\Gasparcitoh\Documents\NetBeansProjects\AppGym\src\main\java\com\mycompany\appgym\persistencia\exceptions\IllegalOrphanException.java
@@ -21,6 +22,7 @@ C:\Users\Gasparcitoh\Documents\NetBeansProjects\AppGym\src\main\java\com\mycompa
 C:\Users\Gasparcitoh\Documents\NetBeansProjects\AppGym\src\main\java\com\mycompany\appgym\igu\Principal.java
 C:\Users\Gasparcitoh\Documents\NetBeansProjects\AppGym\src\main\java\com\mycompany\appgym\logica\Training.java
 C:\Users\Gasparcitoh\Documents\NetBeansProjects\AppGym\src\main\java\com\mycompany\appgym\igu\addTraining.java
+C:\Users\Gasparcitoh\Documents\NetBeansProjects\AppGym\src\main\java\com\mycompany\appgym\igu\ListAlBaja.java
 C:\Users\Gasparcitoh\Documents\NetBeansProjects\AppGym\src\main\java\com\mycompany\appgym\AppGym.java
 C:\Users\Gasparcitoh\Documents\NetBeansProjects\AppGym\src\main\java\com\mycompany\appgym\logica\Controladora.java
 C:\Users\Gasparcitoh\Documents\NetBeansProjects\AppGym\src\main\java\com\mycompany\appgym\igu\addAlEntr.java

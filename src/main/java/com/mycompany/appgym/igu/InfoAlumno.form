@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="title" type="java.lang.String" value="CORE"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
@@ -112,6 +112,9 @@
           <Font name="Segoe UI" size="18" style="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreInfoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtApellidoInfo">
       <Properties>

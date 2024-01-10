@@ -81,7 +81,7 @@ public class InfoAlumno extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnVolverP = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CORE");
         setResizable(false);
 
@@ -100,6 +100,11 @@ public class InfoAlumno extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblInfoAl);
 
         txtNombreInfo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNombreInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreInfoActionPerformed(evt);
+            }
+        });
 
         txtApellidoInfo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
@@ -176,6 +181,10 @@ public class InfoAlumno extends javax.swing.JFrame {
     private void btnVolverPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverPActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnVolverPActionPerformed
+
+    private void txtNombreInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreInfoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreInfoActionPerformed
     public void msj(String mensaje, String tipo, String titulo){
         JOptionPane optPane = new JOptionPane(mensaje);
         if(tipo.equals("Info")){

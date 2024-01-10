@@ -1,5 +1,6 @@
 package com.mycompany.appgym.igu;
 
+import com.mycompany.appgym.logica.AlEntr;
 import com.mycompany.appgym.logica.Controladora;
 import com.mycompany.appgym.logica.PriceList;
 import java.text.SimpleDateFormat;
@@ -17,6 +18,7 @@ public class ListPrice extends javax.swing.JFrame {
         initComponents();
         ctrP = new Controladora();
         actTabla();
+        this.setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -26,11 +28,10 @@ public class ListPrice extends javax.swing.JFrame {
         lblAlumnos = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtbPrices = new javax.swing.JTable();
-        btnBuscar = new javax.swing.JButton();
-        txtBuscAl = new javax.swing.JTextField();
         btnVolverP = new javax.swing.JButton();
+        btnModP = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("CORE");
 
         lblAlumnos.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
@@ -57,26 +58,19 @@ public class ListPrice extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jtbPrices);
 
-        btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-
-        txtBuscAl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        txtBuscAl.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscAlActionPerformed(evt);
-            }
-        });
-
         btnVolverP.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnVolverP.setText("Volver");
         btnVolverP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverPActionPerformed(evt);
+            }
+        });
+
+        btnModP.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnModP.setText("Modificar");
+        btnModP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModPActionPerformed(evt);
             }
         });
 
@@ -88,16 +82,16 @@ public class ListPrice extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnVolverP)
-                        .addGap(0, 613, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3)
-                    .addComponent(lblAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnBuscar)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtBuscAl, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(16, 16, 16))
+                        .addComponent(btnModP)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnVolverP)
+                                .addGap(0, 613, Short.MAX_VALUE))
+                            .addComponent(jScrollPane3)
+                            .addComponent(lblAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(16, 16, 16))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,12 +100,10 @@ public class ListPrice extends javax.swing.JFrame {
                 .addComponent(btnVolverP)
                 .addGap(3, 3, 3)
                 .addComponent(lblAlumnos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBuscAl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar))
                 .addGap(16, 16, 16)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(btnModP)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -119,9 +111,6 @@ public class ListPrice extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     
-    public void limpiarTabla() {
-	txtBuscAl.setText("");
-    }
     public void actTabla() {
 	DefaultTableModel modeloTabla = new DefaultTableModel(){
          @Override
@@ -163,18 +152,31 @@ public class ListPrice extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_jtbPricesMouseClicked
-    //Boton Buscar
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        
-    }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnVolverPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverPActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnVolverPActionPerformed
-
-    private void txtBuscAlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscAlActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscAlActionPerformed
+    //Boton modificar Precio
+    private void btnModPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModPActionPerformed
+        //Controlar que la tabla no este vacia
+        if(jtbPrices.getRowCount() > 0){
+            //Controlar la seleccion de alumno
+            if(jtbPrices.getSelectedRow()!=-1){
+                //me guarda el id que esta en la columna 0 de la fila seleccionada
+                int idPrice = Integer.parseInt(String.valueOf(jtbPrices.getValueAt(jtbPrices.getSelectedRow(), 0)));
+                // Obtener el objeto Alumno correspondiente a la fila seleccionada
+                edPrice edPrice = new edPrice();
+                edPrice.setVisible(true);
+                edPrice.setLocationRelativeTo(null);
+                edPrice.modPrecio(idPrice);
+                this.setVisible(false);
+            }else {
+                msj("No Selecciono ningun Alumno","Error","Error");
+            }
+        }else {
+            msj("No hay Alumnos","Error","Error");
+        }   
+    }//GEN-LAST:event_btnModPActionPerformed
        
     public void msj(String mensaje, String tipo, String titulo){
         JOptionPane optPane = new JOptionPane(mensaje);
@@ -190,11 +192,10 @@ public class ListPrice extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnModP;
     private javax.swing.JButton btnVolverP;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jtbPrices;
     private javax.swing.JLabel lblAlumnos;
-    private javax.swing.JTextField txtBuscAl;
     // End of variables declaration//GEN-END:variables
 }
