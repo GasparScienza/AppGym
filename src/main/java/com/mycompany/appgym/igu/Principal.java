@@ -31,7 +31,7 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CORE");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Gasparcitoh\\Documents\\NetBeansProjects\\AppGym\\Imagenes\\Logo Core.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Logo/Logo Core.png"))); // NOI18N
 
         jMenuBar1.setFocusable(false);
         jMenuBar1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N

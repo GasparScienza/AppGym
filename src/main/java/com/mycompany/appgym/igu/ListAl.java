@@ -29,7 +29,6 @@ public class ListAl extends javax.swing.JFrame {
         lblAlumnos = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtbAlumnos = new javax.swing.JTable();
-        btnDelAlumno = new javax.swing.JButton();
         btnBuscarAl = new javax.swing.JButton();
         txtBuscAl = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
@@ -61,14 +60,6 @@ public class ListAl extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(jtbAlumnos);
-
-        btnDelAlumno.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnDelAlumno.setText("Dar de baja");
-        btnDelAlumno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDelAlumnoActionPerformed(evt);
-            }
-        });
 
         btnBuscarAl.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnBuscarAl.setText("Buscar");
@@ -105,14 +96,12 @@ public class ListAl extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnVolverP)
-                        .addGap(0, 613, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
                     .addComponent(lblAlumnos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDelAlumno)
                         .addGap(18, 18, 18)
                         .addComponent(btnBuscarAl)
                         .addGap(18, 18, 18)
@@ -130,7 +119,6 @@ public class ListAl extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBuscAl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarAl)
-                    .addComponent(btnDelAlumno)
                     .addComponent(jButton2))
                 .addGap(16, 16, 16)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -151,35 +139,6 @@ public class ListAl extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_jtbAlumnosMouseClicked
-
-    private void btnDelAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelAlumnoActionPerformed
-        /**
-
-        //Controlar que la tabla no este vacia
-        if(jtbAlumnos.getRowCount() > 0){
-            //Controlar la seleccion de alumno
-            if(jtbAlumnos.getSelectedRow()!=-1){
-                //me guarda el id que esta en la columna 0 de la fila seleccionada
-                int idAl = Integer.parseInt(String.valueOf(jtbAlumnos.getValueAt(jtbAlumnos.getSelectedRow(), 0)));
-                
-                int m = JOptionPane.showConfirmDialog(null, "Estas seguro?","Baja Alumno",DO_NOTHING_ON_CLOSE);
-                if(m==0){
-                    alu = ctrP.findAlumno(idAl);
-                    
-                    alu.setAssociate(true);
-                    ctrP.edAl(alu);
-                    limpiarTabla();
-                    actTabla();
-                    msj("El alumno " + alu.getSurname()+ " " +alu.getName()+ " fue dado de baja","Info","Baja Alumno");
-                }
-            }else {
-                msj("No Selecciono ningun Alumno","Error","Error");
-            }
-        }else {
-            msj("No hay Alumnos","Error","Error");
-        }
-        **/
-    }//GEN-LAST:event_btnDelAlumnoActionPerformed
     
     private void columns(ArrayList<AlEntr> lista){
 	modeloTabla = new DefaultTableModel(){
@@ -267,7 +226,6 @@ public class ListAl extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarAl;
-    private javax.swing.JButton btnDelAlumno;
     private javax.swing.JButton btnVolverP;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane3;
